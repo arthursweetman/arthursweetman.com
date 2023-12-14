@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ReactMarkdown from 'react-markdown';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
@@ -10,6 +11,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import { TextField } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -18,6 +20,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export default function ArtificialIntelligence() {
     const [scriptResult, setScriptResult] = React.useState('');
+
+    const MarkdownComponent = ({text}) => {
+        return (
+            <div style={{textAlign: 'left'}}>
+              <ReactMarkdown>{text}</ReactMarkdown>
+            </div>
+        );
+    }
 
     const runPythonScript = async () => {
         try {
@@ -39,9 +49,11 @@ export default function ArtificialIntelligence() {
             <Button onClick={runPythonScript}>
                 Run Python Script
             </Button>
-            <Typography>
-                Script Result: {scriptResult}
-            </Typography>
+            <MarkdownComponent text={scriptResult} />
+            <TextField 
+                label="Gemini"
+                size="large"
+            />
         </>
     );
 }
