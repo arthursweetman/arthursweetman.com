@@ -20,7 +20,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './Markdown.css';
 
 export default function ArtificialIntelligence() {
-    const [scriptResult, setScriptResult] = React.useState('');
+    const [geminiText, setGeminiText] = React.useState('');
     const [inputData, setInputData] = React.useState('');
 
     const MarkdownComponent = ({text}) => {
@@ -31,22 +31,21 @@ export default function ArtificialIntelligence() {
         );
     }
 
-    const sendDataToServer = async ({}) => {
+    const speak_to_gemini = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/send-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'text/plain',
-            },
-            body: inputData,
+            const response = await fetch('http://localhost:5000/api/to-gemini', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                body: inputData,
             });
 
             const data = await response.json();
             console.log(data);
-            setScriptResult(data.result)
+            setGeminiText(data.result)
         } catch (error) {
             console.error('Error sending data to server:', error);
-            setScriptResult(error)
         }
     };
       
@@ -56,16 +55,23 @@ export default function ArtificialIntelligence() {
             <h1>
                 This is my homepage to display all my projects related to machine learning and artificial intelligence.
             </h1>
-            <MarkdownComponent text={scriptResult} />
-            <TextField 
-                label="Gemini"
-                size="large"
-                value={inputData}
-                onChange={(e) => setInputData(e.target.value)}
-            />
-            <Button onClick={sendDataToServer}>
-                Send query to Gemini
-            </Button>
+            <MarkdownComponent text={geminiText} />
+            <Container>
+                <TextField 
+                    label="Speak to Gemini..."
+                    value={inputData}
+                    onChange={(e) => setInputData(e.target.value)}
+                    fullWidth
+                />
+                <Button 
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    onClick={speak_to_gemini}
+                >
+                    Send query to Gemini
+                </Button>
+            </Container>
         </>
     );
 }
