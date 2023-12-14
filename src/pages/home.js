@@ -39,12 +39,6 @@ const cardInfo = {
     },
 }
 
-const images = {
-    "linkedin": "https://media.licdn.com/dms/image/C5603AQG-Pqhv8Sl1MQ/profile-displayphoto-shrink_100_100/0/1657646293325?e=1707955200&v=beta&t=u8X18-Sdk1O7_EPA7RIqDyoJ1jMPIleMAKUf7G_ivzs",
-    "GitHub": "https://avatars.githubusercontent.com/u/56804555?v=4",
-    "BakerHughes": "https://www.bakerhughes.com/themes/custom/bh/dist/images/logo.png"
-}
-
 
 export default function HomePage(){
     return(

@@ -1,6 +1,7 @@
 import { Outlet, Link } from 'react-router-dom';
 import './App.css';
 import ResponsiveAppBar from './AppBar';
+import Footer from './components/footer';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <div>
         <Outlet />
       </div>
+      <Footer />
     </div>
   );
 }
