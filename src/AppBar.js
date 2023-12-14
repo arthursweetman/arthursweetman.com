@@ -12,8 +12,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Link as RouterLink, MemoryRouter } from 'react-router-dom';
 
-const pages = ['Home', 'AI', 'Data Science', 'Brewing'];
+const pages = ['Home', 'AI', 'Brewing'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -34,6 +35,15 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const buttonLinks = {
+    'Home' : "/",
+    'AI' : '/artificial-intelligence',
+    'Brewing' : "/"
+  }
+  function goToPage(button){
+    return buttonLinks[button];
+  }
 
   return (
     <AppBar position="static">
@@ -88,8 +98,13 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem 
+                  key={page} 
+                  onClick={handleCloseNavMenu}
+                  component={RouterLink}
+                  to={goToPage(page)}
+                >
+                    <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -118,6 +133,8 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
+                component={RouterLink}
+                to={goToPage(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
