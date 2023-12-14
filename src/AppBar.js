@@ -39,7 +39,7 @@ function ResponsiveAppBar() {
   const buttonLinks = {
     'Home' : "/",
     'AI' : '/artificial-intelligence',
-    'Brewing' : "/"
+    'Brewing' : "/brewing"
   }
   function goToPage(button){
     return buttonLinks[button];

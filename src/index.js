@@ -9,6 +9,8 @@ import App from './App';
 import ErrorPage from './pages/error-page';
 import reportWebVitals from './reportWebVitals';
 import ArtificialIntelligence from './pages/artificial-intelligence';
+import HomePage from './pages/home';
+import Brewing from './pages/brewing';
 
 const router = createBrowserRouter([
   {
@@ -17,8 +19,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        index: 'true',
+        element: <HomePage />
+      },
+      {
         path: "/artificial-intelligence",
         element: <ArtificialIntelligence />
+      },
+      {
+        path: "/brewing",
+        element: <Brewing />
       },
     ],
   },
