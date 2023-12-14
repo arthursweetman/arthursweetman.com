@@ -20,6 +20,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export default function ArtificialIntelligence() {
     const [scriptResult, setScriptResult] = React.useState('');
+    const [inputData, setInputData] = React.useState('');
 
     const MarkdownComponent = ({text}) => {
         return (
@@ -29,14 +30,22 @@ export default function ArtificialIntelligence() {
         );
     }
 
-    const runPythonScript = async () => {
+    const sendDataToServer = async ({}) => {
         try {
-            const response = await fetch('http://localhost:5000/api/run-script');
+            const response = await fetch('http://localhost:5000/api/send-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain',
+            },
+            body: inputData,
+            });
+
             const data = await response.json();
-            console.log(data)
-            setScriptResult(data.result);
+            console.log(data);
+            setScriptResult(data.result)
         } catch (error) {
-            console.error('Error running Python script:', error);
+            console.error('Error sending data to server:', error);
+            setScriptResult(error)
         }
     };
       
@@ -46,14 +55,16 @@ export default function ArtificialIntelligence() {
             <h1>
                 This is my homepage to display all my projects related to machine learning and artificial intelligence.
             </h1>
-            <Button onClick={runPythonScript}>
-                Run Python Script
-            </Button>
             <MarkdownComponent text={scriptResult} />
             <TextField 
                 label="Gemini"
                 size="large"
+                value={inputData}
+                onChange={(e) => setInputData(e.target.value)}
             />
+            <Button onClick={sendDataToServer}>
+                Send query to Gemini
+            </Button>
         </>
     );
 }
