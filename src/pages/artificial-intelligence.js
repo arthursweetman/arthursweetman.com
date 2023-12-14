@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import './Markdown.css';
 
 export default function ArtificialIntelligence() {
     const [scriptResult, setScriptResult] = React.useState('');
@@ -24,7 +25,7 @@ export default function ArtificialIntelligence() {
 
     const MarkdownComponent = ({text}) => {
         return (
-            <div style={{textAlign: 'left'}}>
+            <div className='markdown-container'>
               <ReactMarkdown>{text}</ReactMarkdown>
             </div>
         );

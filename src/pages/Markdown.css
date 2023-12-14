@@ -1,0 +1,66 @@
+/* MarkdownComponent.css */
+
+.markdown-container {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    text-align: left;
+  }
+  
+  /* Style for headings */
+  .markdown-container h1,
+  .markdown-container h2,
+  .markdown-container h3,
+  .markdown-container h4,
+  .markdown-container h5,
+  .markdown-container h6 {
+    margin-bottom: 10px;
+  }
+  
+  /* Style for paragraphs */
+  .markdown-container p {
+    margin-bottom: 15px;
+  }
+  
+  /* Style for lists */
+  .markdown-container ul,
+  .markdown-container ol {
+    margin-bottom: 15px;
+  }
+  
+  .markdown-container li {
+    margin-bottom: 5px;
+  }
+  
+  /* Style for code blocks */
+  .markdown-container pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    overflow: auto;
+  }
+  
+  .markdown-container code {
+    font-family: 'Courier New', monospace;
+  }
+  
+  /* Style for links */
+  .markdown-container a {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  
+  /* Style for blockquotes */
+  .markdown-container blockquote {
+    border-left: 2px solid #007bff;
+    padding-left: 10px;
+    margin-left: 0;
+    color: #555;
+  }
+  
+  /* Add more styles as needed */
+  
