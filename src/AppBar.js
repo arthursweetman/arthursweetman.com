@@ -17,6 +17,12 @@ import { Link as RouterLink, MemoryRouter } from 'react-router-dom';
 const pages = ['Home', 'AI', 'Brewing'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
+const buttonLinks = {
+  'Home' : "/arthursweetman.com/",
+  'AI' : '/arthursweetman.com/artificial-intelligence',
+  'Brewing' : "/arthursweetman.com/brewing"
+}
+
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -36,11 +42,6 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  const buttonLinks = {
-    'Home' : "/",
-    'AI' : '/artificial-intelligence',
-    'Brewing' : "/brewing"
-  }
   function goToPage(button){
     return buttonLinks[button];
   }
