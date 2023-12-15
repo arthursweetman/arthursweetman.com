@@ -15,10 +15,17 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link as RouterLink, MemoryRouter } from 'react-router-dom';
 
-const cards = ["linkedIn", "GitHub", "BakerHughes"]
+const cards = ["Gemini","linkedIn", "GitHub", "BakerHughes"]
 
 const cardInfo = {
+    "Gemini": {
+        "header": "Gemini",
+        "content": "Interact with my app integrating Google's LLM Gemini",
+        "link": "/artificial-intelligence",
+        "image": "https://lh3.googleusercontent.com/ey9Pvhmj3IqklZuRTiz2EeADv6flN-gYNOgAKO3x7jguUWsIYnzbmKG_DtxemRWelKR6nmBrGj1g_79ksrf-vrDvCTr1z3CtpHQC1cVL3-7652BDAw=w2592-rw"
+    },
     "linkedIn": {
         "header": "LinkedIn",
         "content": "View my experience, education, and connect with me on LinkedIn",
@@ -70,8 +77,7 @@ export default function HomePage(){
                             spacing={2}
                             justifyContent="center"
                         >
-                            <Button variant="contained">Main call to action</Button>
-                            <Button variant="outlined">Secondary action</Button>
+                            <Button variant="contained">Imma make this button do something at a later point</Button>
                         </Stack>
                     </Container>
                 </Box>
@@ -102,7 +108,8 @@ export default function HomePage(){
                                 <CardActions>
                                     <Button 
                                         size="small"
-                                        href={cardInfo[card]['link']}
+                                        component={RouterLink}
+                                        to={cardInfo[card]['link']}
                                     >
                                         {"Go to "+card}
                                     </Button>
