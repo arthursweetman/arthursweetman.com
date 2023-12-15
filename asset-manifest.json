@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/arthursweetman.com/static/css/main.61628c80.css",
-    "main.js": "/arthursweetman.com/static/js/main.ecc4ad2a.js",
-    "static/js/787.7f227c7a.chunk.js": "/arthursweetman.com/static/js/787.7f227c7a.chunk.js",
-    "index.html": "/arthursweetman.com/index.html",
-    "main.61628c80.css.map": "/arthursweetman.com/static/css/main.61628c80.css.map",
-    "main.ecc4ad2a.js.map": "/arthursweetman.com/static/js/main.ecc4ad2a.js.map",
-    "787.7f227c7a.chunk.js.map": "/arthursweetman.com/static/js/787.7f227c7a.chunk.js.map"
+    "main.css": "/static/css/main.61628c80.css",
+    "main.js": "/static/js/main.5f477202.js",
+    "static/js/787.7f227c7a.chunk.js": "/static/js/787.7f227c7a.chunk.js",
+    "index.html": "/index.html",
+    "main.61628c80.css.map": "/static/css/main.61628c80.css.map",
+    "main.5f477202.js.map": "/static/js/main.5f477202.js.map",
+    "787.7f227c7a.chunk.js.map": "/static/js/787.7f227c7a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.61628c80.css",
-    "static/js/main.ecc4ad2a.js"
+    "static/js/main.5f477202.js"
   ]
 }
