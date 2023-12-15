@@ -33,7 +33,7 @@ export default function ArtificialIntelligence() {
 
     const speak_to_gemini = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/to-gemini', {
+            const response = await fetch('https://gemini-g6am4zwx5a-uc.a.run.app/api/to-gemini', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'text/plain',
