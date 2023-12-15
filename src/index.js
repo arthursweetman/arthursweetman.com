@@ -14,7 +14,7 @@ import Brewing from './pages/brewing';
 
 const router = createBrowserRouter([
   {
-    path: "/arthursweetman.com",
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
@@ -23,11 +23,11 @@ const router = createBrowserRouter([
         element: <HomePage />
       },
       {
-        path: "/arthursweetman.com/artificial-intelligence",
+        path: "/artificial-intelligence",
         element: <ArtificialIntelligence />
       },
       {
-        path: "/arthursweetman.com/brewing",
+        path: "/brewing",
         element: <Brewing />
       },
     ],

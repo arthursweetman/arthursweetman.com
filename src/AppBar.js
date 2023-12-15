@@ -18,9 +18,9 @@ const pages = ['Home', 'AI', 'Brewing'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const buttonLinks = {
-  'Home' : "/arthursweetman.com/",
-  'AI' : '/arthursweetman.com/artificial-intelligence',
-  'Brewing' : "/arthursweetman.com/brewing"
+  'Home' : "/",
+  'AI' : '/artificial-intelligence',
+  'Brewing' : "/brewing"
 }
 
 function ResponsiveAppBar() {
