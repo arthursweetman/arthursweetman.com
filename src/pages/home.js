@@ -62,9 +62,7 @@ export default function HomePage(){
                             About Me
                         </Typography>
                         <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                            Something short and leading about the collection below—its contents,
-                            the creator, etc. Make it short and sweet, but not too short so folks
-                            don&apos;t simply skip over it entirely.
+                            Data Scientist and Statistician with interests in Machine Learning and Artificial Intelligence, automation, outer space, and beer brewing.
                         </Typography>
                         <Stack
                             sx={{ pt: 4 }}
