@@ -1,6 +1,6 @@
 /* MarkdownComponent.css */
 
-.markdown-container {
+  .markdown-container {
     /* width: 80%;
     max-width: 800px; */
     margin: auto;
@@ -8,6 +8,13 @@
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     text-align: left;
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+
+  .grid-item {
+    box-sizing: border-box; /* Include this for consistent sizing */
+    max-height: 600px;
+    overflow-y: auto;
   }
   
   /* Style for headings */
