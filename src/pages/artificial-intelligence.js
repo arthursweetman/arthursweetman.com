@@ -22,6 +22,20 @@ import './Markdown.css';
 export default function ArtificialIntelligence() {
     const [geminiText, setGeminiText] = React.useState('');
     const [inputData, setInputData] = React.useState('');
+    const [shakespeareText, setShakespeareText] = React.useState('');
+    const backendAPI = 'https://arthursweetman-com-backend-g6am4zwx5a-uc.a.run.app'
+
+    const tileStyle = {
+        border: '1px solid #ddd', // Light-gray border
+        padding: '15px', // Optional padding for better aesthetics
+        borderRadius: '10px', // Optional border-radius for rounded corners
+    };
+
+    const gridContainerStyle = {
+        width: '90%', // Default width for medium screens and smaller
+        maxWidth: 1400, // Max width for larger screens
+        margin: '0 auto', // Center the container
+      };
 
     const MarkdownComponent = ({text}) => {
         return (
@@ -33,7 +47,7 @@ export default function ArtificialIntelligence() {
 
     const speak_to_gemini = async () => {
         try {
-            const response = await fetch('https://gemini-g6am4zwx5a-uc.a.run.app/api/to-gemini', {
+            const response = await fetch(backendAPI+'/api/to-gemini', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'text/plain',
@@ -48,6 +62,21 @@ export default function ArtificialIntelligence() {
             console.error('Error sending data to server:', error);
         }
     };
+
+    const start_shakespeare = async () => {
+        try {
+            const response = await fetch(backendAPI+'/api/shakespeare', {
+                method: 'GET'
+            });
+
+            const data = await response.json();
+            console.log(data);
+            setShakespeareText(data.result)
+        } catch (error) {
+            console.error('Error sending data to server:', error);
+        }
+    };
+
       
     
     return(
@@ -55,23 +84,42 @@ export default function ArtificialIntelligence() {
             <h1>
                 This is my homepage to display all my projects related to machine learning and artificial intelligence.
             </h1>
-            <MarkdownComponent text={geminiText} />
-            <Container>
-                <TextField 
-                    label="Speak to Gemini..."
-                    value={inputData}
-                    onChange={(e) => setInputData(e.target.value)}
-                    fullWidth
-                />
-                <Button 
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    onClick={speak_to_gemini}
-                >
-                    Send query to Gemini
-                </Button>
-            </Container>
+            <Grid container spacing={2} style={gridContainerStyle}>
+                <Grid item xs={12} md={6}>
+                    <Container style={tileStyle}>
+                        <MarkdownComponent text={geminiText} />
+                        <TextField 
+                            label="Speak to Gemini..."
+                            value={inputData}
+                            onChange={(e) => setInputData(e.target.value)}
+                            fullWidth
+                        />
+                        <Button 
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            onClick={speak_to_gemini}
+                        >
+                            Send query to Gemini
+                        </Button>
+                    </Container>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Container style={tileStyle}>
+                        <Typography className='markdown-container'>
+                            {shakespeareText}
+                        </Typography>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            onClick={start_shakespeare}
+                        >
+                            Print shakespeare
+                        </Button>
+                    </Container>
+                </Grid>
+            </Grid>
         </>
     );
 }
