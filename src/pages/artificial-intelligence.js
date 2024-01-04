@@ -20,6 +20,11 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './Markdown.css';
 
+const githubLinks = {
+    'gemini': 'https://github.com/arthursweetman/speak-to-gemini',
+    'shakespeare': 'https://github.com/arthursweetman/transformer'
+}
+
 export default function ArtificialIntelligence() {
     const [geminiText, setGeminiText] = React.useState('');
     const [inputData, setInputData] = React.useState('');
@@ -126,6 +131,7 @@ export default function ArtificialIntelligence() {
                                 Send query to Gemini
                             </Button>}
                             {geminiIsLoading && <CircularProgress size={24} color="secondary"/>}
+                            <Link href={githubLinks['gemini']} style={{margin:10}}>See Code in GitHub</Link>
                         </Container>
                     </Container>
                 </Grid>
@@ -144,6 +150,7 @@ export default function ArtificialIntelligence() {
                                 Print shakespeare
                             </Button>}
                             {shakespeareIsLoading && <CircularProgress size={24} color="secondary"/>}
+                            <Link href={githubLinks['shakespeare']} style={{margin:10}}>See Code in GitHub</Link>
                         </Container>
                     </Container>
                 </Grid>
