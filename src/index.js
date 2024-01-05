@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   RouterProvider,
+  HashRouter,
+  createHashRouter
 } from "react-router-dom";
 import './index.css';
 import App from './App';
@@ -12,7 +14,7 @@ import ArtificialIntelligence from './pages/artificial-intelligence';
 import HomePage from './pages/home';
 import Brewing from './pages/brewing';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
