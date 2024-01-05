@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
@@ -9,32 +10,54 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CircularProgress from '@mui/material/CircularProgress';
 import CssBaseline from '@mui/material/CssBaseline';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import { TextField } from '@mui/material';
+import { CardActionArea, Collapse, TextField } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './Markdown.css';
+import Shakespeare from '../components/shakespeare';
+import Gemini from '../components/gemini';
 
-const githubLinks = {
-    'gemini': 'https://github.com/arthursweetman/speak-to-gemini',
-    'shakespeare': 'https://github.com/arthursweetman/transformer'
-}
+
+const ExpandMore = styled((props) => {
+    const { expand, ...other } = props;
+    return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+    }),
+}));
+
 
 export default function ArtificialIntelligence() {
-    const [geminiText, setGeminiText] = React.useState('');
-    const [inputData, setInputData] = React.useState('');
-    const [shakespeareText, setShakespeareText] = React.useState('');
-    const [geminiIsLoading, setGeminiIsLoading] = React.useState(false);
-    const [shakespeareIsLoading, setShakespeareIsLoading] = React.useState(false);
-    const backendAPI = 'https://arthursweetman-com-backend-g6am4zwx5a-uc.a.run.app'
+    const cards = ['Shakespeare','Gemini']
+    const [expandedShak, setExpandedShak] = React.useState(false);
+    const [expandedGem, setExpandedGem] = React.useState(false);
+    
+    const handleExpandClick = (card) => {
+        if(card == "Shakespeare"){
+            setExpandedShak(!expandedShak);
+        } else if(card == "Gemini") {
+            setExpandedGem(!expandedGem);
+        }
+    };
+
+    const expanded = {
+        'Shakespeare': expandedShak,
+        'Gemini': expandedGem
+    }
 
     const tileStyle = {
-        border: '1px solid #ddd', // Light-gray border
+        border: '2px solid #888', // Light-gray border
         padding: '15px', // Optional padding for better aesthetics
         borderRadius: '10px', // Optional border-radius for rounded corners
         boxSizing: 'border-box', /* Include this for consistent sizing */
@@ -44,117 +67,64 @@ export default function ArtificialIntelligence() {
         flexDirection: 'column'
     };
 
-    const inputStyle = {
-        marginTop: 10,
-        margin: '0 auto', // Center the container
-    }
-
     const gridContainerStyle = {
         width: '90%', // Default width for medium screens and smaller
         maxWidth: 1400, // Max width for larger screens
-        margin: '0 auto', // Center the container
+        margin: '10px auto', // Center the container
     };
 
-    const MarkdownComponent = ({text}) => {
-        return (
-            <div className='markdown-container'>
-              <ReactMarkdown>{text}</ReactMarkdown>
-            </div>
-        );
+    const cardContent = {
+        "Shakespeare":{
+            "text": "Expand this card to see my LLM created from scratch using the Transformer (decoder-only) architecture. This was trained on the works of Shakespeare and can generate infinite Shakespeare-like text. The LLM does a great job of producing similar word rhythms and sentence structures that we see in Shakespeare's original works.",
+            "link": "https://github.com/arthursweetman/transformer"
+        },
+        "Gemini":{
+            "text": "Expand this to send single queries to Google's Bard and view it's response.",
+            "link": "https://github.com/arthursweetman/speak-to-gemini"
+        }
     }
-
-    const speak_to_gemini = async () => {
-        try {
-            setGeminiIsLoading(true); // Show loading indicator
-            const response = await fetch(backendAPI+'/api/to-gemini', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'text/plain',
-                },
-                body: inputData,
-            });
-
-            const data = await response.json();
-            console.log(data);
-            setGeminiText(data.result);
-
-        } catch (error) {
-            console.error('Error sending data to server:', error);
-            setGeminiText('Error sending data to server:', error);
-        } finally {
-            setGeminiIsLoading(false); // Hide loading indicator
-        }
-    };
-
-    const start_shakespeare = async () => {
-        try {
-            setShakespeareIsLoading(true); // Show loading indicator
-            const response = await fetch(backendAPI+'/api/shakespeare', {
-                method: 'GET'
-            });
-
-            const data = await response.json();
-            console.log(data);
-            setShakespeareText(data.result)
-        } catch (error) {
-            console.error('Error sending data to server:', error);
-            setShakespeareText('Error sending data to server:', error)
-        } finally {
-            setShakespeareIsLoading(false); // Hide loading indicator
-        }
-    };
-
-
-    
     return(
         <>
             <h1>
-                This is my homepage to display all my projects related to machine learning and artificial intelligence.
+                View some of my projects related to artificial intelligence here
             </h1>
+            <h4>(All of my projects can be seen on my GitHub)</h4>
             <Grid container spacing={2} style={gridContainerStyle}>
-                <Grid item xs={12} md={6}>
-                    <Container style={tileStyle}>
-                        <MarkdownComponent text={geminiText} />
-                        <Container style={inputStyle}>
-                            <TextField 
-                                label="Speak to Gemini..."
-                                value={inputData}
-                                onChange={(e) => setInputData(e.target.value)}
-                                fullWidth
-                            />
-                            {!geminiIsLoading && <Button 
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                onClick={speak_to_gemini}
-                            >
-                                Send query to Gemini
-                            </Button>}
-                            {geminiIsLoading && <CircularProgress size={24} color="secondary"/>}
-                            <Link href={githubLinks['gemini']} style={{margin:10}}>See Code in GitHub</Link>
-                        </Container>
-                    </Container>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <Container style={tileStyle}>
-                        <pre className='markdown-container'>
-                            {shakespeareText}
-                        </pre>
-                        <Container style={inputStyle}>
-                            {!shakespeareIsLoading && <Button
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                onClick={start_shakespeare}
-                            >
-                                Print shakespeare
-                            </Button>}
-                            {shakespeareIsLoading && <CircularProgress size={24} color="secondary"/>}
-                            <Link href={githubLinks['shakespeare']} style={{margin:10}}>See Code in GitHub</Link>
-                        </Container>
-                    </Container>
-                </Grid>
+                {cards.map( (card) => (
+                    <Grid item xs={12} md={6}>
+                        <Card>
+                            <CardContent>
+                                <Typography>
+                                    {cardContent[card].text}
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button 
+                                    variant='contained'
+                                    href={cardContent[card].link}    
+                                >
+                                    See code in Github
+                                </Button>
+                                <ExpandMore 
+                                    expand={expanded[card]}
+                                    onClick={() => handleExpandClick(card)}
+                                    aria-expanded={expanded[card]}
+                                    aria-label="show more"
+                                >
+                                    <ExpandMoreIcon />
+                                </ExpandMore>
+                            </CardActions>
+                            <Collapse in={expanded[card]} timeout="auto" unmountOnExit>
+                                {card=="Shakespeare" && <Shakespeare />}
+                                {card=="Gemini" && <Gemini />}
+                            </Collapse>
+                        </Card>
+                    </Grid>
+                ))}
             </Grid>
+            <h4>
+                Future projects for me include fine-tuning existing LLMs (like LLaMA) for project purposes and scaling up my current model and training on bigger and better data.
+            </h4>
         </>
     );
 }

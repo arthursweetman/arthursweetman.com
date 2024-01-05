@@ -204,7 +204,7 @@ export default function HomePage(){
                     </ThemeProvider>
                 </Container>
                 <Container sx={{ py: 8 }} maxWidth="md">
-                    <Grid container spacing={4}>
+                    <Grid container spacing={4} justifyContent="center">
                         {cards.map((card) => (
                             <Grid item key={card} xs={12} sm={6} md={4}>
                                 <Card
