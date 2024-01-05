@@ -106,7 +106,7 @@ export default function HomePage(){
                                 component={RouterLink}
                                 to='/artificial-intelligence'
                             >
-                                See some of my prjects
+                                See some of my AI prjects
                             </Button>
                         </Stack>
                     </Container>
@@ -125,7 +125,7 @@ export default function HomePage(){
                                 <h3 className="vertical-timeline-element-title">Data Scientist and Analytic Developer @ Baker Hughes</h3>
                                 <h4 className="vertical-timeline-element-subtitle">Houston, TX</h4>
                                 <p>
-                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                    Python, Agile, Machine Learning, Client-first Development, Data Science, RM&D
                                 </p>
                             </VerticalTimelineElement>
                             <VerticalTimelineElement
@@ -137,7 +137,7 @@ export default function HomePage(){
                                 <h3 className="vertical-timeline-element-title">Emissions Analyst @ Baker Hughes</h3>
                                 <h4 className="vertical-timeline-element-subtitle">Houston, TX</h4>
                                 <p>
-                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                    Carbon emissions calculation, emissions modeling, PowerBI, emissions abatement, data analysis, project management
                                 </p>
                             </VerticalTimelineElement>
                             <VerticalTimelineElement
@@ -149,7 +149,7 @@ export default function HomePage(){
                                 <h3 className="vertical-timeline-element-title">Embedded Software Engineer @ Baker Hughes</h3>
                                 <h4 className="vertical-timeline-element-subtitle">Skaneateles, NY</h4>
                                 <p>
-                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                    Voice Recognition Software, RM&D, RM&D Dashboard development
                                 </p>
                             </VerticalTimelineElement>
                             <VerticalTimelineElement
@@ -164,7 +164,7 @@ export default function HomePage(){
                                 <h4 className="vertical-timeline-element-subtitle">Miami University</h4>
                                 <h5 className="vertical-timeline-element-subtitle">Oxford, OH</h5>
                                 <p>
-                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                    Statistical Theory, Machine Learning, Mathematical Statistics, Experimental Design, R
                                 </p>
                                 <Button 
                                     variant="contained" 
@@ -184,7 +184,7 @@ export default function HomePage(){
                                 <h3 className="vertical-timeline-element-title">IT Internship @ Baker Hughes</h3>
                                 <h4 className="vertical-timeline-element-subtitle">Houston, TX</h4>
                                 <p>
-                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                    Agile Development, Database Management
                                 </p>
                             </VerticalTimelineElement>
                             <VerticalTimelineElement
@@ -197,7 +197,7 @@ export default function HomePage(){
                                 <h4 className="vertical-timeline-element-subtitle">Miami University</h4>
                                 <h5 className="vertical-timeline-element-subtitle">Oxford, OH</h5>
                                 <p>
-                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                    Data Science, R, Machine Learning, Database Management, Python, Statistical Modeling
                                 </p>
                             </VerticalTimelineElement>
                         </VerticalTimeline>
