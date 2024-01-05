@@ -16,8 +16,11 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink, MemoryRouter } from 'react-router-dom';
+import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+import './Markdown.css';
 
-const cards = ["Gemini","linkedIn", "GitHub", "BakerHughes"]
+const cards = ["linkedIn", "GitHub"]
 
 const cardInfo = {
     "Gemini": {
@@ -46,14 +49,35 @@ const cardInfo = {
     },
 }
 
+const theme = createTheme({
+    palette: {
+      miami: {
+        main: '#fff',
+        light: '#C41230',
+        dark: '#000',
+        contrastText: '#C41230',
+      },
+      bh: {
+        main: '#013025',
+        light: '#fff',
+        dark: '#013025',
+        contrastText: '#02a783',
+      },
+    },
+  });
 
 export default function HomePage(){
+    const colors = {
+        'bh-dg': '#013025',
+        'bh-lg': '#02a783',
+        'miami-red':'#C41230'
+    }
+
     return(
         <>
-            <main>
+            <main class="home">
                 <Box
                     sx={{
-                        bgcolor: 'background.paper',
                         pt: 8,
                         pb: 6,
                     }}
@@ -72,15 +96,113 @@ export default function HomePage(){
                             Data Scientist and Statistician with interests in Machine Learning and Artificial Intelligence, automation, outer space, and beer brewing.
                         </Typography>
                         <Stack
-                            sx={{ pt: 4 }}
+                            sx={{ pt: 1 }}
                             direction="row"
                             spacing={2}
                             justifyContent="center"
                         >
-                            <Button variant="contained">Imma make this button do something at a later point</Button>
+                            <Button
+                                variant="contained"
+                                component={RouterLink}
+                                to='/artificial-intelligence'
+                            >
+                                See some of my prjects
+                            </Button>
                         </Stack>
                     </Container>
                 </Box>
+                <Container>
+                    <ThemeProvider theme={theme}>
+                        <VerticalTimeline animate={true} lineColor='gray'>
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                contentStyle={{ background: colors['bh-dg'], color: '#fff' }}
+                                contentArrowStyle={{ borderRight: '7px solid  ' + colors['bh-dg'] }}
+                                date="Aug 2023 - present"
+                                dateClassName='text-black'
+                                iconStyle={{ background: colors['bh-lg'], color: '#fff' }}
+                            >
+                                <h3 className="vertical-timeline-element-title">Data Scientist and Analytic Developer @ Baker Hughes</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Houston, TX</h4>
+                                <p>
+                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                </p>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                date="Jan 2023 - Aug 2023"
+                                dateClassName='text-black'
+                                iconStyle={{ background: colors['bh-lg'], color: '#fff' }}
+                            >
+                                <h3 className="vertical-timeline-element-title">Emissions Analyst @ Baker Hughes</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Houston, TX</h4>
+                                <p>
+                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                </p>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                date="July 2022 - Jan 2023"
+                                dateClassName='text-black'
+                                iconStyle={{ background: colors['bh-lg'], color: '#fff' }}
+                            >
+                                <h3 className="vertical-timeline-element-title">Embedded Software Engineer @ Baker Hughes</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Skaneateles, NY</h4>
+                                <p>
+                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                </p>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                contentStyle={{ background: colors['miami-red'], color: '#fff' }}
+                                contentArrowStyle={{ borderRight: '7px solid  '+colors['miami-red'] }}
+                                date="2021 - 2022"
+                                dateClassName='text-black'
+                                iconStyle={{ background: "#aaa", color: '#fff' }}
+                            >
+                                <h3 className="vertical-timeline-element-title">Master's of Science in Statistics</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Miami University</h4>
+                                <h5 className="vertical-timeline-element-subtitle">Oxford, OH</h5>
+                                <p>
+                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                </p>
+                                <Button 
+                                    variant="contained" 
+                                    color="miami" 
+                                    href="https://www.linkedin.com/in/arthur-sweetman/overlay/education/612650766/multiple-media-viewer?profileId=ACoAACpYTJcBoETcUBbm9M4tNTMGPen0B5A41EU&treasuryMediaId=1635526719432&type=DOCUMENT&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BSW%2BZ9ytaSSGoXwi411zEvQ%3D%3D">
+                                        Thesis
+                                </Button>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--work"
+                                contentStyle={{ background: colors['bh-lg'], color: '#fff' }}
+                                contentArrowStyle={{ borderRight: '7px solid  ' + colors['bh-lg'] }}
+                                date="Summer 2021"
+                                dateClassName='text-black'
+                                iconStyle={{ background: colors['bh-dg'], color: '#fff' }}
+                            >
+                                <h3 className="vertical-timeline-element-title">IT Internship @ Baker Hughes</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Houston, TX</h4>
+                                <p>
+                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                </p>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                className="vertical-timeline-element--education"
+                                date="2018 - 2022"
+                                dateClassName='text-black'
+                                iconStyle={{ background: colors['miami-red'], color: '#fff' }}
+                            >
+                                <h3 className="vertical-timeline-element-title">Bachelor's of Science in Data Science</h3>
+                                <h4 className="vertical-timeline-element-subtitle">Miami University</h4>
+                                <h5 className="vertical-timeline-element-subtitle">Oxford, OH</h5>
+                                <p>
+                                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                                </p>
+                            </VerticalTimelineElement>
+                        </VerticalTimeline>
+                    </ThemeProvider>
+                </Container>
                 <Container sx={{ py: 8 }} maxWidth="md">
                     <Grid container spacing={4}>
                         {cards.map((card) => (

@@ -1,3 +1,12 @@
+
+.home {
+  text-align: left;
+}
+
+.text-black {
+  color: #000;
+}
+
 /* MarkdownComponent.css */
 
   .markdown-container {
